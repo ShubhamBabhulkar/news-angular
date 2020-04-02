@@ -27,8 +27,6 @@
                     </mat-error>
                     <mat-error *ngIf="getrequired('password').errors.minLength">Password should be 8 characters
                     </mat-error>
-                    <!-- <mat-error *ngIf="getrequired('password').errors.pattern">Password must contain 1 letter, 1 special character and 1 number
-                    </mat-error> -->
                   </mat-error>
                   </mat-form-field>
                   <div class="example-button-row">
@@ -37,7 +35,7 @@
               </form>
               <br>
               <mat-label class="color-black">Don't have an account yet?</mat-label> 
-              <mat-label> Register now</mat-label> 
+              <mat-label class="cursor-pointer" (click)="openDialog()"> Register now</mat-label> 
                 </div>
         </mat-card>
     </div>

@@ -14,12 +14,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { SignupPopupComponent } from './components/signup-popup/signup-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
-    LoginComponent
+    LoginComponent,
+    SignupPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +35,11 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SignupPopupComponent]
 })
 export class AppModule { }

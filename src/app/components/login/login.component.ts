@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { SignupPopupComponent } from './../signup-popup/signup-popup.component';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {MatDialog} from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +21,22 @@ export class LoginComponent implements OnInit {
     ])
   });
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
+  openDialog = () => {
+    this.dialog.open(SignupPopupComponent)
+    .afterClosed()
+    .subscribe(result => {
+      console.log(result);
+    });
+  }
+
   getrequired = (value) => {
     return this.Loginform.get(value);
   }
+
   userLogin = (loginData: any) => {
   //   this.authService.isProgressStatus(true);
   //   this.userEmailforResend = loginData.email.trim();
