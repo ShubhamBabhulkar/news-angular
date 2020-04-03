@@ -35,7 +35,9 @@
               </form>
               <br>
               <mat-label class="color-black">Don't have an account yet?</mat-label> 
-              <mat-label class="cursor-pointer" (click)="openDialog()"> Register now</mat-label> 
+              <mat-label class="cursor-pointer color-blue" [routerLink]="['/register']" > Register now</mat-label> 
+              <mat-error *ngIf="errorMessage">{{errorMessage}}
+                </mat-error>
                 </div>
         </mat-card>
     </div>

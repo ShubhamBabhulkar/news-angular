@@ -1,4 +1,4 @@
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { NewsService } from './../../service/news.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 
@@ -18,14 +18,23 @@ export class NewsAddComponent implements OnInit {
     ]),
 
   });
-  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-    console.log('data', data);
-  }
+  errorMessage: string;
+  constructor(
+    private newsService: NewsService
+  ) {}
 
   ngOnInit() {
   }
 
   getrequired = (value) => {
     return this.addNewsForm.get(value);
+  }
+
+  addNews = (data) => {
+    this.errorMessage = '';
+    this.newsService.addNews(data).subscribe( result => {
+      }, error => {
+        this.errorMessage = error.error;
+      });
   }
 }

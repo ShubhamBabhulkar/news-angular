@@ -26,6 +26,10 @@ a {
 button:focus{
     outline: none !important;
 }
+mat-label:focus{
+    outline: none !important;
+}
+
 span:focus{
     outline: none !important;
 }
@@ -47,4 +51,10 @@ span:focus{
 }
 .cursor-pointer{
     cursor: pointer;
+}
+.color-blue{
+    color: #800080;
+}
+.min-height-60vh{
+    min-height: 60vh;
 }

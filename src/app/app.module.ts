@@ -22,6 +22,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { AccordianViewComponent } from './components/accordian-view/accordian-view.component';
 import { NewsAddComponent } from './components/news-add/news-add.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,11 +32,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     SignupPopupComponent,
     NewsSectionComponent,
     AccordianViewComponent,
-    NewsAddComponent
+    NewsAddComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

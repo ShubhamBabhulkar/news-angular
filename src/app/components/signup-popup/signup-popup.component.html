@@ -1,13 +1,9 @@
 <div class="row wrapped-card justify-content-md-center align-items-center justify-content-center">
-   <div class="col-md-12 display-flex-end">
-        <button mat-icon-button mat-dialog-close="yes" aria-label="Example icon-button with a heart icon">
-                <mat-icon>close</mat-icon>
-        </button>
-    </div>
-    <div class="col-md-10 col-10">
+  <div class="col-md-10 col-10">
+    <mat-card> 
           <div class="text-center wrapped-login-box">
             <span class="login-text color-black">REGISTER FOR NEWS</span> 
-            <form class="example-form" [formGroup]='signipForm' #f="ngForm" (ngSubmit)="userLogin(f.value)">
+            <form class="example-form" [formGroup]='signipForm' #f="ngForm" (ngSubmit)="userRegistration(f.value)">
             <mat-form-field class="example-full-width col-md-12">
                 <input matInput formControlName="name" type="text" placeholder="Name">
                 <mat-error *ngIf="getrequired('name').touched && getrequired('name').invalid">
@@ -54,9 +50,21 @@
                         </mat-error>
                         </mat-form-field>
                   <div class="example-button-row">
-                    <button mat-raised-button  color="primary" class="width-100 cursor-pointer margin-top-05rem margin-bottom-05rem" [disabled]="!signipForm.valid" [mat-dialog-close]="f.value" cdkFocusInitial>Register</button>
+                    <button mat-raised-button  color="primary" class="width-100 cursor-pointer margin-top-05rem margin-bottom-05rem" [disabled]="!signipForm.valid" cdkFocusInitial>Register</button>
                   </div>
+                  <div *ngIf="registered">
+                    <mat-label class="color-black">Registered successfully</mat-label> 
+                    <mat-label class="cursor-pointer color-blue" [routerLink]="['/login']"> go to login page.
+                    </mat-label> 
+                </div>
+                  <mat-error *ngIf="passwordNotMatch">Confirm Password not match
+                    </mat-error>
+                    <mat-error *ngIf="errorMessage">{{errorMessage}}
+                      </mat-error>
+                    
               </form>
                 </div>
+              </mat-card> 
     </div>
+
   </div>

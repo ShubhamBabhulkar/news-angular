@@ -1,6 +1,7 @@
+import { UserService } from './../../service/user.service';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+const _ = require('lodash');
 @Component({
   selector: 'app-signup-popup',
   templateUrl: './signup-popup.component.html',
@@ -8,6 +9,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 })
 export class SignupPopupComponent implements OnInit {
   hide = true;
+  hideConfirm = true;
   signipForm = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -15,6 +17,7 @@ export class SignupPopupComponent implements OnInit {
     ]),
     password: new FormControl('', [
       Validators.required,
+      Validators.pattern('(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*?&#^])[A-Za-z\d$@$!%*?&].{8,}')
     ]),
     name: new FormControl('', [
       Validators.required,
@@ -23,8 +26,12 @@ export class SignupPopupComponent implements OnInit {
       Validators.required,
     ]),
   });
-  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-    console.log('data', data);
+  passwordNotMatch: boolean;
+  registered: boolean;
+  errorMessage: any;
+  constructor(
+    private userService: UserService
+  ) {
   }
 
   ngOnInit() {
@@ -32,5 +39,21 @@ export class SignupPopupComponent implements OnInit {
 
   getrequired = (value) => {
     return this.signipForm.get(value);
+  }
+
+  userRegistration = (data) => {
+    this.passwordNotMatch = false;
+    this.registered = false;
+    this.errorMessage = '';
+    if (data.password === data.confirmpassword) {
+      const pickData = _.pick(data, ['name', 'email', 'password']);
+      this.userService.userRegister(pickData).subscribe( result => {
+        this.registered = true;
+      }, error => {
+        this.errorMessage = error.error.message;
+      });
+    } else {
+      this.passwordNotMatch = true;
+    }
   }
 }
