@@ -19,6 +19,7 @@ import { SignupPopupComponent } from './components/signup-popup/signup-popup.com
 import { NewsSectionComponent } from './components/news-section/news-section.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { AccordianViewComponent } from './components/accordian-view/accordian-view.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     TopBarComponent,
     LoginComponent,
     SignupPopupComponent,
-    NewsSectionComponent
+    NewsSectionComponent,
+    AccordianViewComponent
   ],
   imports: [
     BrowserModule,
