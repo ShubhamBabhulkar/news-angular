@@ -16,12 +16,17 @@ import {MatInputModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SignupPopupComponent } from './components/signup-popup/signup-popup.component';
+import { NewsSectionComponent } from './components/news-section/news-section.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     LoginComponent,
-    SignupPopupComponent
+    SignupPopupComponent,
+    NewsSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,9 @@ import { SignupPopupComponent } from './components/signup-popup/signup-popup.com
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent],
