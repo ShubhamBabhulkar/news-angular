@@ -15,4 +15,7 @@ export class NewsService {
   getNews = () => {
     return this.httpRequest.get(this.baseUrl + 'news');
   }
+  getMyNews = () => {
+    return this.httpRequest.get(this.baseUrl + 'news/mynews');
+  }
 }

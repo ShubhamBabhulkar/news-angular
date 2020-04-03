@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-accordian-view',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accordian-view.component.scss']
 })
 export class AccordianViewComponent implements OnInit {
-
+  @Input('news') news;
   constructor() { }
 
   ngOnInit() {

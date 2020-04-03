@@ -19,6 +19,7 @@ export class NewsAddComponent implements OnInit {
     ]),
   });
   errorMessage: string;
+  successfullyAdd: any;
   constructor(
     private newsService: NewsService
   ) {}
@@ -33,6 +34,7 @@ export class NewsAddComponent implements OnInit {
   addNews = (data) => {
     this.errorMessage = '';
     this.newsService.addNews(data).subscribe( result => {
+      this.successfullyAdd = result['message'];
       }, error => {
         this.errorMessage = error.error;
       });

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
+  user: any;
 
   constructor(
     private router: Router,
@@ -15,6 +16,7 @@ export class TopBarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+   this.user = this.authService.currentUser();
   }
   logout = () => {
     localStorage.removeItem('token');

@@ -9,6 +9,8 @@ import { NewsService } from 'src/app/service/news.service';
 })
 export class NewsSectionComponent implements OnInit {
   errorMessage: string;
+  allNews: Object;
+  myNews: any;
 
   constructor(
     private authService: AuthService,
@@ -16,13 +18,24 @@ export class NewsSectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.authService.currentUser());
+    // console.log(this.authService.currentUser());
     this.getNews();
+    this.getMyNews();
   }
 
   getNews = () => {
     this.errorMessage = '';
     this.newsService.getNews().subscribe( result => {
+        this.allNews = result['news'];
+      }, error => {
+        this.errorMessage = error.error;
+      });
+  }
+
+  getMyNews = () => {
+    this.errorMessage = '';
+    this.newsService.getMyNews().subscribe( result => {
+        this.myNews = result['news'];
       }, error => {
         this.errorMessage = error.error;
       });
