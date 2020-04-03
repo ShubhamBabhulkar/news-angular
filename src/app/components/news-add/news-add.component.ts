@@ -1,6 +1,7 @@
 import { NewsService } from './../../service/news.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
+import { NewsSectionComponent } from '../news-section/news-section.component';
 
 @Component({
   selector: 'app-news-add',
@@ -21,7 +22,8 @@ export class NewsAddComponent implements OnInit {
   errorMessage: string;
   successfullyAdd: any;
   constructor(
-    private newsService: NewsService
+    private newsService: NewsService,
+    private newsSectionComponent: NewsSectionComponent
   ) {}
 
   ngOnInit() {
@@ -35,6 +37,12 @@ export class NewsAddComponent implements OnInit {
     this.errorMessage = '';
     this.newsService.addNews(data).subscribe( result => {
       this.successfullyAdd = result['message'];
+      this.addNewsForm.reset();
+      this.newsSectionComponent.getNews();
+      this.newsSectionComponent.getMyNews();
+      setTimeout(() => {
+        this.successfullyAdd = '';
+      }, 3000);
       }, error => {
         this.errorMessage = error.error;
       });

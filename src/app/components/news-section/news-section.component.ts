@@ -18,7 +18,6 @@ export class NewsSectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.authService.currentUser());
     this.getNews();
     this.getMyNews();
   }
@@ -28,6 +27,7 @@ export class NewsSectionComponent implements OnInit {
     this.newsService.getNews().subscribe( result => {
         this.allNews = result['news'];
       }, error => {
+        this.allNews = [];
         this.errorMessage = error.error;
       });
   }
@@ -37,6 +37,7 @@ export class NewsSectionComponent implements OnInit {
     this.newsService.getMyNews().subscribe( result => {
         this.myNews = result['news'];
       }, error => {
+        this.myNews = [];
         this.errorMessage = error.error;
       });
   }

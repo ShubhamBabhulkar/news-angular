@@ -24,6 +24,8 @@ import { NewsAddComponent } from './components/news-add/news-add.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
+import { ConfirmationPopupComponent } from './components/confirmation-popup/confirmation-popup.component';
+import { EditNewsPopupComponent } from './components/edit-news-popup/edit-news-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,8 @@ import { AuthInterceptor } from './interceptor/auth-interceptor';
     NewsSectionComponent,
     AccordianViewComponent,
     NewsAddComponent,
+    ConfirmationPopupComponent,
+    EditNewsPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,5 +65,8 @@ import { AuthInterceptor } from './interceptor/auth-interceptor';
     }
   ],
   bootstrap: [AppComponent],
+  entryComponents: [
+    ConfirmationPopupComponent,
+    EditNewsPopupComponent]
 })
 export class AppModule { }

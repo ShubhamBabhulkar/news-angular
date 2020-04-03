@@ -1,0 +1,31 @@
+<div class="row wrapped-card justify-content-md-center align-items-center justify-content-center">
+        <div class="col-md-12 display-flex-end">
+             <button mat-icon-button mat-dialog-close="close" aria-label="Example icon-button with a heart icon">
+                <mat-icon>close</mat-icon>
+             </button>
+         </div>
+         <div class="col-md-10 col-10">
+               <div class="text-center wrapped-login-box">
+                 <span class="login-text color-black">EDIT NEWS</span> 
+                 <form class="example-form" [formGroup]='newsEditForm' #f="ngForm" (ngSubmit)="newsEditForm(f.value)">
+                 <mat-form-field class="example-full-width col-md-12">
+                     <input matInput formControlName="title" type="text" placeholder="News Title" [(ngModel)]="newsforEdit.title">
+                     <mat-error *ngIf="getrequired('title').touched && getrequired('title').invalid">
+                     <mat-error *ngIf="getrequired('title').errors.required">News title required
+                     </mat-error>
+                     </mat-error>
+                 </mat-form-field>
+                 <mat-form-field class="example-full-width col-md-12">
+                        <input matInput formControlName="description" type="text" placeholder="News Description" [(ngModel)]="newsforEdit.description">
+                        <mat-error *ngIf="getrequired('description').touched && getrequired('description').invalid">
+                        <mat-error *ngIf="getrequired('description').errors.required">News description required
+                        </mat-error>
+                        </mat-error>
+                </mat-form-field>
+                <div class="example-button-row">
+                    <button mat-raised-button  color="primary" class="width-100 cursor-pointer margin-top-05rem margin-bottom-05rem" [disabled]="!newsEditForm.valid" [mat-dialog-close]="f.value" cdkFocusInitial>Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

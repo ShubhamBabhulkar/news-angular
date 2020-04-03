@@ -1,29 +1,28 @@
 <div class="row wrapped-card justify-content-md-center align-items-center justify-content-center min-height-60vh">
-         <div class="col-md-10 col-10">
-               <div class="text-center wrapped-login-box">
-                 <span class="login-text color-black">ADD NEWS</span> 
-                 <form class="example-form" [formGroup]='addNewsForm' #f="ngForm" (ngSubmit)="addNews(f.value)">
-                 <mat-form-field class="example-full-width col-md-12">
-                     <input matInput formControlName="title" type="text" placeholder="News Title">
-                     <mat-error *ngIf="getrequired('title').touched && getrequired('title').invalid">
-                     <mat-error *ngIf="getrequired('title').errors.required">News title required
-                     </mat-error>
-                     </mat-error>
-                 </mat-form-field>
-                 <mat-form-field class="example-full-width col-md-12">
-                        <input matInput formControlName="description" type="text" placeholder="News Description (minimum 5000 characters)">
-                        <mat-error *ngIf="getrequired('description').touched && getrequired('description').invalid">
-                        <mat-error *ngIf="getrequired('description').errors.required">News description required
-                        </mat-error>
-                        </mat-error>
-                    </mat-form-field>
+        <div class="col-md-10 col-10">
+            <div class="text-center wrapped-login-box">
+                <span class="login-text color-black">ADD NEWS</span> 
+                <form class="example-form" [formGroup]='addNewsForm' #f="ngForm" (ngSubmit)="addNews(f.value)">
+                <mat-form-field class="example-full-width col-md-12">
+                    <input matInput formControlName="title" type="text" placeholder="News Title">
+                    <mat-error *ngIf="getrequired('title').touched && getrequired('title').invalid">
+                    <mat-error *ngIf="getrequired('title').errors.required">News title required
+                    </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-md-12">
+                    <input matInput formControlName="description" type="text" placeholder="News Description (minimum 5000 characters)">
+                    <mat-error *ngIf="getrequired('description').touched && getrequired('description').invalid">
+                    <mat-error *ngIf="getrequired('description').errors.required">News description required
+                    </mat-error>
+                    </mat-error>
+                </mat-form-field>
                 <div class="example-button-row">
                     <button mat-raised-button  color="primary" class="width-100 cursor-pointer margin-top-05rem margin-bottom-05rem" [disabled]="!addNewsForm.valid" cdkFocusInitial>Add</button>
                 </div>
-                <mat-error *ngIf="errorMessage">{{errorMessage}}
-                    </mat-error>
-                    <mat-label>{{successfullyAdd}}</mat-label>
-            </form>
+                <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+                <mat-label>{{successfullyAdd}}</mat-label>
+                </form>
+            </div>
         </div>
     </div>
-</div>

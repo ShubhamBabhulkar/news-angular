@@ -1,10 +1,18 @@
 <mat-accordion>
-        <mat-expansion-panel class="margin-bottom-0-5rem">
-            <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{news?.title}}
-            </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-label>{{news?.description}}</mat-label>
-        </mat-expansion-panel>
-</mat-accordion> 
+    <mat-expansion-panel class="margin-bottom-0-5rem">
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{news?.title}}
+        </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngIf="authService.currentUser()._id === news.user._id" class="display-flex-end">
+            <button mat-icon-button color="primary" matTooltip="Edit news" matTooltipPosition="above" (click)="openEditDialog(news)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" matTooltip="Delete news" matTooltipPosition="above" (click)="openDialog(news._id);">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+        <mat-label>{{news?.description}}</mat-label>
+    </mat-expansion-panel>
+</mat-accordion>
