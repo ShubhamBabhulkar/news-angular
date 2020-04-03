@@ -1,7 +1,7 @@
 import { UserService } from './../../service/user.service';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-const _ = require('lodash');
+import { _ } from 'lodash';
 @Component({
   selector: 'app-signup-popup',
   templateUrl: './signup-popup.component.html',

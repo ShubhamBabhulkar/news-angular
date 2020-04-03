@@ -15,8 +15,8 @@ export class NewsAddComponent implements OnInit {
     ]),
     description: new FormControl('', [
       Validators.required,
+      Validators.pattern('.{5000,}')
     ]),
-
   });
   errorMessage: string;
   constructor(

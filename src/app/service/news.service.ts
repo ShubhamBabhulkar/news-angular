@@ -12,4 +12,7 @@ export class NewsService {
   addNews = (news) => {
     return this.httpRequest.post(this.baseUrl + 'news', news);
   }
+  getNews = () => {
+    return this.httpRequest.get(this.baseUrl + 'news');
+  }
 }

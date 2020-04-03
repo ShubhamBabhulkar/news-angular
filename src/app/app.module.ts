@@ -22,8 +22,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { AccordianViewComponent } from './components/accordian-view/accordian-view.component';
 import { NewsAddComponent } from './components/news-add/news-add.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptor/auth-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,8 +53,13 @@ import { HttpClientModule } from '@angular/common/http';
     MatExpansionModule,
     MatTooltipModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [SignupPopupComponent, NewsAddComponent]
 })
 export class AppModule { }
