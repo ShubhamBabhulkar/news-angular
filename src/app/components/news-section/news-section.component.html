@@ -1,9 +1,17 @@
-<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
-    <mat-tab label="News"> 
-        <app-accordian-view></app-accordian-view>      
-    </mat-tab>
-    
-    <mat-tab label="My News">
-        <app-accordian-view></app-accordian-view>      
-    </mat-tab>
-  </mat-tab-group>
+<div class="row float-right">
+    <button mat-mini-fab color="primary" (click)="openDialog()">
+        <mat-icon matTooltip="Add new News" matTooltipPosition="above">add</mat-icon>
+    </button>
+</div>
+
+    <div class="col-md-11"> 
+        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+            <mat-tab label="News"> 
+                <app-accordian-view></app-accordian-view>      
+            </mat-tab>
+
+            <mat-tab label="My News">
+                <app-accordian-view></app-accordian-view>      
+            </mat-tab>
+        </mat-tab-group>
+    </div>    

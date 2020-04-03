@@ -20,6 +20,8 @@ import { NewsSectionComponent } from './components/news-section/news-section.com
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AccordianViewComponent } from './components/accordian-view/accordian-view.component';
+import { NewsAddComponent } from './components/news-add/news-add.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { AccordianViewComponent } from './components/accordian-view/accordian-vi
     LoginComponent,
     SignupPopupComponent,
     NewsSectionComponent,
-    AccordianViewComponent
+    AccordianViewComponent,
+    NewsAddComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +48,11 @@ import { AccordianViewComponent } from './components/accordian-view/accordian-vi
     MatButtonModule,
     MatDialogModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [SignupPopupComponent]
+  entryComponents: [SignupPopupComponent, NewsAddComponent]
 })
 export class AppModule { }
