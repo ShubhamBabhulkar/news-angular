@@ -7,9 +7,9 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   constructor(private httpRequest: HttpClient) { }
-  private baseUrl = 'http://localhost:3000/';
+  private baseUrl = 'http://localhost:3000/user';
 
   userRegister = (userEntry) => {
-    return this.httpRequest.post(this.baseUrl + 'user', userEntry);
+    return this.httpRequest.post(this.baseUrl, userEntry);
   }
 }

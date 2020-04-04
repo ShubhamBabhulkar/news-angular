@@ -5,6 +5,8 @@ import { NewsService } from 'src/app/service/news.service';
 import {MatDialog} from '@angular/material';
 import { NewsSectionComponent } from '../news-section/news-section.component';
 import { EditNewsPopupComponent } from '../edit-news-popup/edit-news-popup.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-accordian-view',
   templateUrl: './accordian-view.component.html',
@@ -12,13 +14,13 @@ import { EditNewsPopupComponent } from '../edit-news-popup/edit-news-popup.compo
 })
 export class AccordianViewComponent implements OnInit {
   @Input('news') news;
-  errorMessage: string;
   newsIdforEdit: any;
   constructor(
     public authService: AuthService,
     private newsService: NewsService,
     private dialog: MatDialog,
-    private newsSectionComponent: NewsSectionComponent
+    private newsSectionComponent: NewsSectionComponent,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -51,22 +53,38 @@ export class AccordianViewComponent implements OnInit {
   }
 
   editNews = (newsId, editedNews) => {
-    this.errorMessage = '';
     this.newsService.editNews(newsId, editedNews).subscribe( result => {
       this.newsSectionComponent.getNews();
       this.newsSectionComponent.getMyNews();
+      this.snackBar.open('News edited successfully', 'Done', {
+        duration: 5000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'right'
+      });
     }, error => {
-        this.errorMessage = error.error;
+        this.snackBar.open('error.error', 'Done', {
+          duration: 5000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'right'
+        });
       });
   }
 
   deleteNews = (newsId) => {
-    this.errorMessage = '';
     this.newsService.deleteNews(newsId).subscribe( result => {
       this.newsSectionComponent.getNews();
       this.newsSectionComponent.getMyNews();
+      this.snackBar.open('News deleted successfully', 'Ok', {
+        duration: 5000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'right'
+      });
     }, error => {
-        this.errorMessage = error.error;
+        this.snackBar.open(error.error, 'Ok', {
+          duration: 5000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'right'
+        });
       });
   }
 

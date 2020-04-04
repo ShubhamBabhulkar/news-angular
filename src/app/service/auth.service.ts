@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   constructor(private httpRequest: HttpClient) { }
-  private baseUrl = 'http://localhost:3000/';
+  private baseUrl = 'http://localhost:3000/auth';
 
   isLoggedIn(): boolean {
     const token = localStorage.getItem('token');
@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   login = (credentials) => {
-    return this.httpRequest.put(this.baseUrl + 'auth', credentials);
+    return this.httpRequest.put(this.baseUrl, credentials);
   }
 
 }

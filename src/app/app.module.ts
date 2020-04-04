@@ -26,6 +26,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
 import { ConfirmationPopupComponent } from './components/confirmation-popup/confirmation-popup.component';
 import { EditNewsPopupComponent } from './components/edit-news-popup/edit-news-popup.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,8 @@ import { EditNewsPopupComponent } from './components/edit-news-popup/edit-news-p
     MatDialogModule,
     MatTabsModule,
     MatExpansionModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   providers: [
     {

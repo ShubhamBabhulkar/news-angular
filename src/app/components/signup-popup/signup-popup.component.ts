@@ -1,6 +1,7 @@
 import { UserService } from './../../service/user.service';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import * as _ from 'lodash';
 @Component({
   selector: 'app-signup-popup',
@@ -28,9 +29,9 @@ export class SignupPopupComponent implements OnInit {
   });
   passwordNotMatch: boolean;
   registered: boolean;
-  errorMessage: any;
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -44,13 +45,16 @@ export class SignupPopupComponent implements OnInit {
   userRegistration = (data) => {
     this.passwordNotMatch = false;
     this.registered = false;
-    this.errorMessage = '';
     if (data.password === data.confirmpassword) {
       const pickData = _.pick(data, ['name', 'email', 'password']);
       this.userService.userRegister(pickData).subscribe( result => {
         this.registered = true;
       }, error => {
-        this.errorMessage = error.error.message;
+        this.snackBar.open(error.error.message, 'Done', {
+          duration: 5000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'right'
+        });
       });
     } else {
       this.passwordNotMatch = true;
