@@ -1,3 +1,4 @@
+import { AuthService } from './../../service/auth.service';
 import { NewsService } from './../../service/news.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -24,7 +25,8 @@ export class NewsAddComponent implements OnInit {
   constructor(
     private newsService: NewsService,
     private newsSectionComponent: NewsSectionComponent,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -35,16 +37,19 @@ export class NewsAddComponent implements OnInit {
   }
 
   addNews = (data) => {
+    this.authService.setLoading(true);
     this.newsService.addNews(data).subscribe( result => {
       this.addNewsForm.reset();
       this.newsSectionComponent.getNews();
       this.newsSectionComponent.getMyNews();
+      this.authService.setLoading(false);
       this.snackBar.open('News added successfully', 'Ok', {
         duration: 5000,
         verticalPosition: 'bottom',
         horizontalPosition: 'right'
       });
       }, error => {
+        this.authService.setLoading(false);
         this.snackBar.open(error.error, 'Done', {
           duration: 5000,
           verticalPosition: 'bottom',

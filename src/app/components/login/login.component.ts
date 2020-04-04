@@ -42,14 +42,17 @@ export class LoginComponent implements OnInit {
   }
   userLogin = (credentials: any) => {
     this.errorMessage = '';
+    this.authService.setProgress(true);
     this.authService.login(credentials)
         .subscribe(
           (result: {token: string}) => {
             localStorage.setItem('token', result.token);
             this.router.navigateByUrl('');
+            this.authService.setProgress(false);
           },
           error => {
             this.errorMessage = error.error;
+            this.authService.setProgress(false);
           }
         );
   }

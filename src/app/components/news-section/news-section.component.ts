@@ -23,20 +23,26 @@ export class NewsSectionComponent implements OnInit {
   }
 
   getNews = () => {
+    this.authService.setLoading(true);
     this.errorMessage = '';
     this.newsService.getNews().subscribe( result => {
         this.allNews = result['news'];
+        this.authService.setLoading(false);
       }, error => {
+        this.authService.setLoading(false);
         this.allNews = [];
         this.errorMessage = error.error;
       });
   }
 
   getMyNews = () => {
+    this.authService.setLoading(true);
     this.errorMessage = '';
     this.newsService.getMyNews().subscribe( result => {
         this.myNews = result['news'];
+        this.authService.setLoading(false);
       }, error => {
+        this.authService.setLoading(false);
         this.myNews = [];
         this.errorMessage = error.error;
       });

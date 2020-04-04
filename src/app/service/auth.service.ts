@@ -6,7 +6,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
-
+  loaderisProgress;
+  loaderStatus;
   constructor(private httpRequest: HttpClient) { }
   private baseUrl = 'http://localhost:3000/auth';
 
@@ -28,4 +29,19 @@ export class AuthService {
     return this.httpRequest.put(this.baseUrl, credentials);
   }
 
+  isProgress = () => {
+    return this.loaderisProgress;
+  }
+
+  setProgress  = (status: boolean) => {
+    this.loaderisProgress = status;
+  }
+
+  isLoading = () => {
+    return this.loaderStatus;
+  }
+
+  setLoading = (status: boolean) => {
+    this.loaderStatus = status;
+  }
 }

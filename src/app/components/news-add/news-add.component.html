@@ -13,8 +13,8 @@
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="example-full-width col-md-12">
-                    <mat-label>Enter News Description</mat-label>
-                    <textarea matInput formControlName="description" type="text" matTextareaAutosize matAutosizeMinRows=5 matAutosizeMaxRows=20 placeholder="News Description (minimum 5000 characters)"></textarea>
+                    <mat-label>Enter News Description (minimum 5000 characters)</mat-label>
+                    <textarea matInput formControlName="description" type="text" matTextareaAutosize matAutosizeMinRows=5 matAutosizeMaxRows=20 placeholder="News Description"></textarea>
                     <mat-icon matSuffix>note</mat-icon>
                     <mat-error *ngIf="getrequired('description').touched && getrequired('description').invalid">
                     <mat-error *ngIf="getrequired('description').errors.required">News description required

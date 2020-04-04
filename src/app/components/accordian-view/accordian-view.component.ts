@@ -25,6 +25,12 @@ export class AccordianViewComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  getPostedTime = (id) => {
+    const timestamp = id.toString().substring(0, 8);
+    const date = new Date( parseInt( timestamp, 16 ) * 1000 );
+    return date;
+  }
   openDialog = (newsId) => {
     this.dialog.open(ConfirmationPopupComponent, {
       data: {news_id: newsId}
@@ -53,15 +59,18 @@ export class AccordianViewComponent implements OnInit {
   }
 
   editNews = (newsId, editedNews) => {
+    this.authService.setLoading(true);
     this.newsService.editNews(newsId, editedNews).subscribe( result => {
       this.newsSectionComponent.getNews();
       this.newsSectionComponent.getMyNews();
+      this.authService.setLoading(false);
       this.snackBar.open('News edited successfully', 'Done', {
         duration: 5000,
         verticalPosition: 'bottom',
         horizontalPosition: 'right'
       });
     }, error => {
+        this.authService.setLoading(false);
         this.snackBar.open('error.error', 'Done', {
           duration: 5000,
           verticalPosition: 'bottom',
@@ -71,15 +80,18 @@ export class AccordianViewComponent implements OnInit {
   }
 
   deleteNews = (newsId) => {
+    this.authService.setLoading(true);
     this.newsService.deleteNews(newsId).subscribe( result => {
       this.newsSectionComponent.getNews();
       this.newsSectionComponent.getMyNews();
+      this.authService.setLoading(false);
       this.snackBar.open('News deleted successfully', 'Ok', {
         duration: 5000,
         verticalPosition: 'bottom',
         horizontalPosition: 'right'
       });
     }, error => {
+        this.authService.setLoading(false);
         this.snackBar.open(error.error, 'Ok', {
           duration: 5000,
           verticalPosition: 'bottom',

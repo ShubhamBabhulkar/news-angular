@@ -1,3 +1,4 @@
+import { AuthService } from './../../service/auth.service';
 import { UserService } from './../../service/user.service';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -31,7 +32,8 @@ export class SignupPopupComponent implements OnInit {
   registered: boolean;
   constructor(
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {
   }
 
@@ -43,13 +45,16 @@ export class SignupPopupComponent implements OnInit {
   }
 
   userRegistration = (data) => {
+    this.authService.setLoading(true);
     this.passwordNotMatch = false;
     this.registered = false;
     if (data.password === data.confirmpassword) {
       const pickData = _.pick(data, ['name', 'email', 'password']);
       this.userService.userRegister(pickData).subscribe( result => {
         this.registered = true;
+        this.authService.setLoading(false);
       }, error => {
+        this.authService.setLoading(false);
         this.snackBar.open(error.error.message, 'Done', {
           duration: 5000,
           verticalPosition: 'bottom',
@@ -57,6 +62,7 @@ export class SignupPopupComponent implements OnInit {
         });
       });
     } else {
+      this.authService.setLoading(false);
       this.passwordNotMatch = true;
     }
   }

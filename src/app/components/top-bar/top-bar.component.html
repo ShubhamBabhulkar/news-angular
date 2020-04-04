@@ -6,3 +6,7 @@
       <mat-icon *ngIf="authService.isLoggedIn()" matTooltip="Logout" matTooltipPosition="before" class="example-icon cursor-pointer" aria-hidden="false" (click)="logout()">exit_to_app</mat-icon>
     </mat-toolbar-row>
   </mat-toolbar>
+  <mat-progress-bar *ngIf="authService.isProgress()" mode="indeterminate"></mat-progress-bar>
+
+  <mat-progress-spinner *ngIf="authService.isLoading()" class="example-margin wrapped-loader" mode="indeterminate">
+</mat-progress-spinner>

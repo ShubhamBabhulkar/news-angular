@@ -27,6 +27,8 @@ import { AuthInterceptor } from './interceptor/auth-interceptor';
 import { ConfirmationPopupComponent } from './components/confirmation-popup/confirmation-popup.component';
 import { EditNewsPopupComponent } from './components/edit-news-popup/edit-news-popup.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTabsModule,
     MatExpansionModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {
